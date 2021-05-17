@@ -2,7 +2,12 @@ FROM alpine
 
 EXPOSE 8118 9050
 
-RUN apk --update add privoxy tor runit tini
+RUN apk --no-cache --no-progress upgrade && \
+    apk --no-cache --no-progress add \
+    privoxy \
+    tor \
+    runit \
+    tini
 
 COPY service /etc/service/
 
